@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+<h1>This is Home Page</h1>
+    <style>
+        h1 {color:rgb(113, 7, 128);}
+        p {color:blue;}
+      </style>
+    <h1>{{name}}</h1>    
+    <h1>{{age}}</h1>
+    <style>
+        thead {color:rgb(238, 54, 8);}
+        tbody {color:rgb(39, 4, 165);}
+        tfoot {color:red;}
+        
+        table, th, td {
+          border: 1px solid black;
+        }
+        </style>
+     
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>age</th>
+            </tr>
+        </thead>
+        {% for person in persons %}
+        <tr>
+            <th>{{forloop.counter}}</th>
+            <th>{{person.name}}</th>
+            <td>
+            {% if person.age < 18 %}
+            Young
+            {% elif person.age < 50 %}
+            Adult
+            {% else %}
+            Old
+            {% endif %}
+            {{person.age}}
+        </td>
+        </tr>
+        {% endfor %}
+    {% endblock %}
+            
+           
+              
+        
+        
+        
+        
+        

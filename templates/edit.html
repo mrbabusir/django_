@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Update Task{% endblock title %}
+{% block body %}
+<div class = "container">
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
+    {% endif %}
+    <form method = "POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Title</label>
+            <input type="text" name="title" value = "{{task.title}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div class="form-floating">
+                <textarea class="form-control" name = "description" placeholder="Leave a comment here" id="floatingTextarea" >{{task.description}}</textarea>
+                
+                <label for="floatingTextarea">Description</label>
+              </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>    
+
+
+{%endblock body %}

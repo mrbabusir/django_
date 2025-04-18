@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}List all Task{% endblock title %}
+{% block body %}
+<h1>LIST OF TASKS</h1>
+<h2>NUMBER OF TASK: {{all}}</h2>
+<h3>Number of completed tasks: {{completed}}</h3>
+<h3>Number of uncompleted tasks: {{pending}}</h3>
+
+<h5><a href = 'create/' class="btn btn-outline-primary">Add New Task</a></div></h5>
+
+<div class="container">
+    <div class = "background-image"></div>
+     
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for task in tasks %}
+        <tr>
+            <style>
+              h5 {
+                position: absolute;
+                left: 100 px;
+                top: 100 px;
+              }            
+                h1{color:rgba(134, 49, 9, 0.849);}
+                h2{color:rgba(17, 47, 131, 0.733);}
+                h3{color:rgba(0, 7, 1, 0.849);}                
+              </style>
+              <style>
+                thead {color:rgb(238, 54, 8);}
+                tbody {color:rgb(165, 4, 4);}
+                tfoot {color:red;}
+                
+                table, th, td {
+                  border: 1px solid rgb(8, 11, 204);
+                }
+                </style>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{task.title}}</td>
+            <td>{{task.description}}</td>
+            <td>
+               {% if task.is_completed %}
+               <span class="badge bg-success">Completed</span>
+               
+               {% else %}
+               <span class="badge bg-danger">pending</span>
+                {% endif %}
+            </td>
+            <td>
+              <a href = "{{task.pk}}" class="btn btn-success">Mark</a>
+              <a href="{{task.pk}}/edit/" class="btn btn-primary" onclick="return confirm('Are you sure you want to edit this task?')">Update</a>
+              <a href="/task/{{task.pk}}/delete/"  type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to edit this task?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock body %}
+      
+    
+                
+          
+                
+               
+          

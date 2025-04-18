@@ -1,0 +1,53 @@
+# install virtualenv
+pip install virtualenv
+
+#create virtualenv
+virtualenv env
+python -m venv env
+
+#activate virtualenv
+env\Scripts\activate (win)
+source env/Scripts/activate (mac/linux)
+
+#install django
+pip install django
+
+# start project 
+django-admin startproject project_name . (. is optional)
+
+#create app
+python manage.py startapp app_name
+
+# migration file
+python manage.py makemigrations
+
+# Implement changes to Database
+python manage.py migrate
+
+# Run django server
+python manage.py runserver
+
+# open python shell
+python manage.py shell 
+
+# show all the data of a model/table
+Model_name.objects.all()
+
+# show all the data of a model/table with values
+Model_name.objects.all().values()
+
+# create data in a model/table
+Model_name.objects.create(field1='value1', field2='value2')
+
+# fetch single data
+a = Model_name.objects.get(id = 1)
+
+# Update data
+a.field1 = 'new_value'
+a.save()
+
+# Delete
+a.delete()
+
+# filter data
+Model_name.objects.filter(field1='value1', ......)
